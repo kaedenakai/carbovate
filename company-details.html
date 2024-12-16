@@ -274,7 +274,8 @@
         <div id="aaa">
             <p id="companyActivities"  style="font-weight: bold; font-size: large;"></p>
         </div>
-        <a id="companyLink" href="project-details.html" target="_blank">支援事業について詳しく見る</a>
+        <!-- <a id="companyLink" href="project-details.html" target="_blank">支援事業について詳しく見る</a> -->
+        <a id="companyLink" href="javascript:void(0);">支援事業について詳しく見る</a>
         <div class="info-grid">
           <h2 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 1rem;">詳細情報</h2>
           <p></p>
@@ -322,6 +323,12 @@
       } else {
         document.body.innerHTML = '<div class="error-message">企業が見つかりません。</div>';
       }
+    });
+
+    document.getElementById('companyLink').addEventListener('click', () => {
+      const projectId = 1; // 必要な projectId を指定
+      const targetUrl = `project-details.html?id=${projectId}`;
+      window.location.href = targetUrl;
     });
   </script>
 </body>
