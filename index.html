@@ -35,7 +35,9 @@
       height: 100px;
       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
       background-size: cover;
-      animation: wave 10s linear infinite;
+      /* animation: wave 10s linear infinite; */
+      animation: wave 5s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+
     }
 
     @keyframes wave {
@@ -66,6 +68,8 @@
     .btn:hover {
       background-color: white;
       color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .hero {
@@ -76,10 +80,48 @@
       z-index: 1;
     }
 
-    .hero h1 {
-      font-size: 3em;
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0);
+      }
+      70% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.05);
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    .hero-title {
+      font-size: 5em;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.4), /* メインの影 */
+        -2px -2px 4px rgba(255, 255, 255, 0.5); /* 上部のハイライト */
+      color: white;
+      position: relative;
+      z-index: 2;
+      animation: floatUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    .hero-title::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(255, 255, 255, 0.1);
+      z-index: -1;
+      font-size: 3.2em;
+      font-weight: bold;
+      text-shadow: none;
+      filter: blur(5px);
+      animation: floatUp 1.2s
     }
 
     .btn-primary {
@@ -126,6 +168,8 @@
 
     .search-btn:hover {
       background-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .card {
@@ -198,6 +242,11 @@
         grid-template-columns: 1fr;
       }
     }
+
+    a {
+      text-decoration: none; /* 下線をなくす */
+    }
+
   </style>
 </head>
 <body>
@@ -212,7 +261,8 @@
       </nav>
     </div>
     <div class="hero">
-      <h1>すべての人の海洋保全活動に貢献する</h1>
+      <h1 class="hero-title">Carbovate</h1>
+      <h2 class="hero-subtitle">- ブルークレジット活用最大化プラットフォーム -</h2>
       <p>ブルークレジットの創出者・支援企業双方にとって価値の最大化を目指すプラットフォームです</p>
       <a href="#" class="btn-primary">Carbovateについて</a>
     </div>
@@ -228,14 +278,20 @@
   </section>
 
   <section class="projects">
-    <h2></h2>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2>ブルークレジット創出の取り組み</h2>
+      <a href="project-list.html"class="search-btn">プロジェクト一覧</a>
+    </div>     
     <div class="project-cards" id="projectCards">
       <!-- JavaScript で動的に生成 -->
     </div>
   </section>
 
   <section class="companies">
-    <h2>支援企業の取り組み</h2>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>支援・購入企業の取り組み</h2>
+    <a href="company-list.html"class="search-btn">企業活動一覧</a>
+    </div>
     <div class="company-cards" id="companyCards">
       <!-- JavaScript で動的に生成 -->
     </div>
