@@ -2,11 +2,11 @@ const companies = [
     {
         id: 1,
         title: "株式会社〇〇",
-        description: "海洋環境保全プロジェクトA",
+        description: "横浜市わかめ事業",
         image: "img/kigyou.png",
-        activity: "海洋環境保全プロジェクトA",
+        activity: "横浜市わかめ事業",
         date: "2024年3月15日",
-        location: "岐阜県飛騨市",
+        location: "神奈川県横浜市",
         amount: "10t-CO2",
         details: "自社製造のXXによる炭素排出削減活動",
         link: "https://example.com"
@@ -14,11 +14,11 @@ const companies = [
     {
         id: 2,
         title: "△△株式会社",
-        description: "水質管理プロジェクト",
+        description: "洋野町の増殖溝",
         image: "img/kigyou.png",
-        activity: "水質管理プロジェクト",
+        activity: "洋野町の増殖溝",
         date: "2024年3月15日",
-        location: "岐阜県飛騨市",
+        location: "岩手県洋野町",
         amount: "0.8t-CO2",
         details: "自社製造のXXによる炭素排出削減活動",
         link: "https://example.com"
@@ -30,7 +30,7 @@ const companies = [
         image: "img/kigyou.png",
         activity: "ガンガゼウニ捕獲プロジェクト",
         date: "2024年6月25日",
-        location: "沖縄県那覇市",
+        location: "佐賀県唐津市",
         amount: "13t-CO2",
         details: "海洋環境保護プロジェクトへの参画",
         link: "https://example.com"

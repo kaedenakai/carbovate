@@ -171,6 +171,23 @@
       color: var(--text-primary);
     }
 
+    #companyLink {
+      display: inline-block;
+      margin-top: var(--spacing);
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    #companyLink:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.8rem;
@@ -223,6 +240,8 @@
       <div class="project-content">
         <p id="projectDescription"></p>
         <p id="projectDetails"></p>
+        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d432115.72697020246!2d135.79164709454355!3d33.827096594108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60066538d0de7b61%3A0xb33bdb057e03bbd8!2z5LiJ6YeN55yM54aK6YeO5biC!5e0!3m2!1sja!2sjp!4v1734354563655!5m2!1sja!2sjp"  width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         <div class="info-grid">
           <div class="info-item">
             <strong>価格</strong>
@@ -236,6 +255,8 @@
             <strong>開始日</strong>
             <span id="projectStartDate"></span>
           </div>
+          <div></div>
+          <a id="companyLink" href="https://www.jfa.maff.go.jp/j/seibi/attach/pdf/R4_isoyake_kyogikai-10.pdf" target="_blank">プロジェクトについて（外部サイト）</a> 
         </div>
       </div>
     </div>
@@ -255,6 +276,7 @@
         document.getElementById('projectPrice').textContent = project.price;
         document.getElementById('projectLocation').textContent = project.location;
         document.getElementById('projectStartDate').textContent = project.startDate;
+        // document.getElementById('companyLink').href = project.link;
       } else {
         document.body.innerHTML = '<div class="error-message">プロジェクトが見つかりません。</div>';
       }

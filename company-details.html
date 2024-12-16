@@ -143,7 +143,7 @@
       color: var(--text-primary);
     }
 
-    #companyActivities {
+    #aaa {
       list-style: none;
       margin: var(--spacing) 0;
       padding: var(--spacing);
@@ -151,23 +151,12 @@
       border-radius: var(--border-radius);
     }
 
-    #companyActivities li {
+    #aaa p {
       position: relative;
       padding-left: 1.5rem;
       margin-bottom: 0.8rem;
       color: var(--text-secondary);
       transition: transform 0.3s ease;
-    }
-
-    #companyActivities li:hover {
-      transform: translateX(5px);
-    }
-
-    #companyActivities li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--accent-color);
     }
 
     .info-grid {
@@ -282,7 +271,10 @@
       <div class="company-content">
         <!-- <h2 id="companyDescription" style="font-size: 1.6rem;"></h2> -->
         <h2 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 1rem;">支援したブルーカーボン事業</h2>
-        <ul id="companyActivities"></ul>
+        <div id="aaa">
+            <p id="companyActivities"  style="font-weight: bold; font-size: large;"></p>
+        </div>
+        <a id="companyLink" href="http://127.0.0.1:5500/project-details.html?id=1" target="_blank">支援事業について詳しく見る</a>
         <div class="info-grid">
           <h2 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 1rem;">詳細情報</h2>
           <p></p>
@@ -303,11 +295,12 @@
             <strong>その他環境施策</strong>
             <span id="companyDetails">[内容]</span>
           </div>
-          <a id="companyLink" href="#" target="_blank">企業ウェブサイトを見る</a> 
         </div>
     </div>
   </main>
   <script src="js/companies.js"></script>
+  <!-- <script src="js/projects.js"></script> -->
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
@@ -318,18 +311,11 @@
         document.getElementById('companyName').textContent = company.title;
         // document.getElementById('companyLogo').src = company.image;
         // document.getElementById('companyDescription').textContent = company.description;
-
-        const activitiesList = document.getElementById('companyActivities');
-        const activities = company.activity.split('、');
-        activities.forEach(activity => {
-          const li = document.createElement('li');
-          li.textContent = activity;
-          activitiesList.appendChild(li);
-        });
-
+        document.getElementById('companyActivities').textContent = company.activity;
         document.getElementById('companyLocation').textContent = company.location;
+        // document.getElementById('projectDescription').textContent = company.description;
         document.getElementById('companyDate').textContent = company.date;
-        document.getElementById('companyLink').href = company.link;
+        // document.getElementById('companyLink').href = Prject.link;
         document.getElementById('companyAmount').textContent = company.amount;
             // 新しく追加された社員数の表示
         document.getElementById('companyDetails').textContent = company.details;
