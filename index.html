@@ -247,6 +247,20 @@
       text-decoration: none; /* 下線をなくす */
     }
 
+    .service-info {
+      display: flex;
+      flex-direction: column;  /* 縦並びにする */
+      gap: 20px;  /* セクション間のスペース */
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;  /* ボタンとテキストを横並びに */
+    }
+
+    .contact-item h3 {
+      margin-right: 10px;  /* テキストとボタンの間隔 */
+    }
   </style>
 </head>
 <body>
@@ -254,17 +268,19 @@
   <header class="header">
     <div class="wave"></div>
     <!-- 以下既存のheader-container -->
-    <div class="header-container">
-      <nav>
-        <button class="btn">サービス利用申請</button>
-        <button class="btn">お問い合わせ</button>
-      </nav>
-    </div>
-    <div class="hero">
-      <h1 class="hero-title">Carbovate</h1>
-      <h2 class="hero-subtitle">- ブルークレジット活用最大化プラットフォーム -</h2>
-      <p>ブルークレジットの創出者・支援企業双方にとって価値の最大化を目指すプラットフォームです</p>
-      <a href="#" class="btn-primary">Carbovateについて</a>
+      <div class="header-container">
+        <nav>
+          <a href="entry.html" class="btn">サービス利用申請</a>
+          </a>
+          <a href="mailto:example@example.com" class="btn">お問い合わせ</a>
+          </a>
+        </nav>
+      </div>
+      <div class="hero">
+        <h1 class="hero-title">Carbovate</h1>
+        <h2 class="hero-subtitle">- ブルークレジット活用最大化プラットフォーム -</h2>
+        <p>ブルークレジットの創出者・支援企業双方にとって価値の最大化を目指すプラットフォームです</p>
+        <a href="#" class="btn-primary">Carbovateについて</a>
     </div>
   </header>
 
@@ -295,12 +311,6 @@
     <div class="company-cards" id="companyCards">
       <!-- JavaScript で動的に生成 -->
     </div>
-  </section>
-
-  <section class="service-info">
-    <h2>サービス利用をご希望の方</h2>
-    <p>お問い合わせはメールにてお送りください。</p>
-    <a href="mailto:example@example.com" class="btn-primary">メールを送信</a>
   </section>
 
   <footer>
@@ -347,6 +357,12 @@
         });
       });
     });
+
+      //メール送信に遷移  
+      function scrollToContact() {
+        const target = document.getElementById('contactSection');
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
   </script>
 </body>
 </html>
