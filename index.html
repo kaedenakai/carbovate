@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>森かち - 森林価値創造プラットフォーム</title>
+  <style>
+    :root {
+      --primary-color: #006994;
+      --secondary-color: #4FB6E0;
+      --accent-color: #00A6FB;
+      --light-blue: #E3F2FD;
+      --text-color: #333;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(180deg, var(--light-blue) 0%, #ffffff 100%);
+      color: var(--text-color);
+    }
+
+    .header {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      animation: wave 10s linear infinite;
+    }
+
+    @keyframes wave {
+      0% { background-position-x: 0; }
+      100% { background-position-x: 1440px; }
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: white;
+      color: var(--primary-color);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary {
+      background-color: white;
+      color: var(--primary-color);
+      padding: 15px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .search-section {
+      background-color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .search-container input {
+      padding: 12px 20px;
+      border: 2px solid var(--light-blue);
+      border-radius: 25px;
+      width: 300px;
+      margin-right: 10px;
+    }
+
+    .search-btn {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background-color: var(--primary-color);
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      padding: 15px;
+      margin: 0;
+      color: var(--primary-color);
+    }
+
+    .card p {
+      padding: 0 15px 15px;
+      margin: 0;
+      color: var(--text-color);
+    }
+
+    .projects, .companies {
+      padding: 60px 20px;
+    }
+
+    .project-cards, .company-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .service-info {
+      background-color: var(--light-blue);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2em;
+      }
+
+      .search-container input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .project-cards, .company-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 既存のHTML構造はそのままに、新しいwave要素を追加 -->
+  <header class="header">
+    <div class="wave"></div>
+    <!-- 以下既存のheader-container -->
+    <div class="header-container">
+      <nav>
+        <button class="btn">サービス利用申請</button>
+        <button class="btn">お問い合わせ</button>
+      </nav>
+    </div>
+    <div class="hero">
+      <h1>クレジットで森、育む。</h1>
+      <p>森林クレジットの創出・流通による地域経済の活性化を目指すプラットフォームです。</p>
+      <a href="#" class="btn-primary">森かちサービスについて</a>
+    </div>
+  </header>
+
+  <!-- 以下既存のコンテンツ部分は変更なし -->
+  <section class="search-section">
+    <div class="search-container">
+      <h2>森かちクレジット検索</h2>
+      <input type="text" placeholder="キーワードから探す">
+      <button class="search-btn">検索</button>
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2>新規・更新プロジェクト</h2>
+    <div class="project-cards" id="projectCards">
+      <!-- JavaScript で動的に生成 -->
+    </div>
+  </section>
+
+  <section class="companies">
+    <h2>企業活動紹介</h2>
+    <div class="company-cards" id="companyCards">
+      <!-- JavaScript で動的に生成 -->
+    </div>
+  </section>
+
+  <section class="service-info">
+    <h2>サービス利用をご希望の方</h2>
+    <p>クレジット取引をご希望の方はメールでお問い合わせください。</p>
+    <a href="mailto:morikati_pt_contact@sfc.co.jp" class="btn-primary">メールを送信</a>
+  </section>
+
+  <footer>
+    <p>© 2024 住友林業</p>
+  </footer>
+
+  <!-- JavaScriptファイルの読み込み -->
+  <script src="js/projects.js"></script>
+  <script src="js/companies.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // プロジェクトカードの生成
+      const projectCards = document.getElementById('projectCards');
+      projects.forEach(project => {
+        const card = `
+          <div class="card" data-id="${project.id}">
+            <img src="${project.image}" alt="森林画像">
+            <h3>${project.title}</h3>
+            <p>${project.price}</p>
+          </div>
+        `;
+        projectCards.innerHTML += card;
+      });
+
+      // 企業カードの生成
+      const companyCards = document.getElementById('companyCards');
+      companies.forEach(company => {
+        const card = `
+          <div class="card" data-id="${company.id}">
+            <img src="${company.image}" alt="企業ロゴ">
+            <h3>${company.name}</h3>
+            <p>${company.description}</p>
+          </div>
+        `;
+        companyCards.innerHTML += card;
+      });
+
+      // カードクリックイベントの設定
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          const id = card.dataset.id;
+          const type = card.closest('.project-cards') ? 'project' : 'company';
+          window.location.href = `${type}-details.html?id=${id}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

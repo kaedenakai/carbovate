@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>企業詳細</title>
+  <style>
+    :root {
+      --primary-color: #006994;
+      --secondary-color: #4FB6E0;
+      --accent-color: #00A6FB;
+      --light-blue: #E3F2FD;
+      --text-primary: #2c3e50;
+      --text-secondary: #546e7a;
+      --background: #ffffff;
+      --card-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      --spacing: 1.5rem;
+      --border-radius: 15px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: linear-gradient(180deg, var(--light-blue) 0%, #ffffff 100%);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: calc(var(--spacing) * 2) var(--spacing);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      animation: wave 10s linear infinite;
+    }
+
+    @keyframes wave {
+      0% { background-position-x: 0; }
+      100% { background-position-x: 1440px; }
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .back-button {
+      background-color: white;
+      color: var(--primary-color);
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .back-button::before {
+      content: "←";
+      font-size: 1.2em;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: calc(var(--spacing) * 2) auto;
+      padding: 0 var(--spacing);
+    }
+
+    .company-card {
+      background: var(--background);
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .company-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .logo-container {
+      background: var(--light-blue);
+      padding: calc(var(--spacing) * 2);
+      text-align: center;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    #companyLogo {
+      max-width: 300px;
+      max-height: 150px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    #companyLogo:hover {
+      transform: scale(1.05);
+    }
+
+    .company-content {
+      padding: calc(var(--spacing) * 2);
+    }
+
+    #companyDescription {
+      font-size: 1.1rem;
+      margin-bottom: var(--spacing);
+      color: var(--text-primary);
+    }
+
+    #companyActivities {
+      list-style: none;
+      margin: var(--spacing) 0;
+      padding: var(--spacing);
+      background: var(--light-blue);
+      border-radius: var(--border-radius);
+    }
+
+    #companyActivities li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-secondary);
+      transition: transform 0.3s ease;
+    }
+
+    #companyActivities li:hover {
+      transform: translateX(5px);
+    }
+
+    #companyActivities li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing);
+      margin-top: calc(var(--spacing) * 2);
+    }
+
+    .info-item {
+      background: var(--light-blue);
+      padding: var(--spacing);
+      border-radius: var(--border-radius);
+      border-left: 4px solid var(--accent-color);
+      transition: all 0.3s ease;
+    }
+
+    .info-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--primary-color);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-item span {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    #companyLink {
+      display: inline-block;
+      margin-top: var(--spacing);
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    #companyLink:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    #companyDetails {
+      margin-top: calc(var(--spacing) * 2);
+      padding-top: var(--spacing);
+      border-top: 1px solid rgba(0,0,0,0.1);
+      color: var(--text-secondary);
+    }
+
+    .error-message {
+      text-align: center;
+      padding: calc(var(--spacing) * 4);
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .header-content {
+        flex-direction: column-reverse;
+        gap: 1rem;
+      }
+
+      .back-button {
+        align-self: flex-start;
+      }
+
+      .company-content {
+        padding: var(--spacing);
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #companyLogo {
+        max-width: 80%;
+      }
+    }
+  </style>
+</head>
+<body class="details-page">
+  <header>
+    <div class="wave"></div>
+    <div class="header-content">
+      <h1 id="companyName"></h1>
+      <a href="index.html" class="back-button">トップに戻る</a>
+    </div>
+  </header>
+  <main>
+    <div class="company-card">
+      <div class="logo-container">
+        <img id="companyLogo" alt="企業ロゴ">
+      </div>
+      <div class="company-content">
+        <p id="companyDescription"></p>
+        <h2 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 1rem;">主な活動内容</h2>
+        <ul id="companyActivities"></ul>
+        <div class="info-grid">
+          <div class="info-item">
+            <strong>活動地域</strong>
+            <span id="companyLocation"></span>
+          </div>
+          <div class="info-item">
+            <strong>最新活動日</strong>
+            <span id="companyDate"></span>
+          </div>
+        </div>
+        <a id="companyLink" href="#" target="_blank">公式ウェブサイトを見る</a>
+        <p id="companyDetails"></p>
+      </div>
+    </div>
+  </main>
+  <script src="js/companies.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const companyId = params.get('id');
+      const company = companies.find(c => c.id === parseInt(companyId));
+
+      if (company) {
+        document.getElementById('companyName').textContent = company.name;
+        document.getElementById('companyLogo').src = company.image;
+        document.getElementById('companyDescription').textContent = company.description;
+
+        const activitiesList = document.getElementById('companyActivities');
+        const activities = company.activity.split('、');
+        activities.forEach(activity => {
+          const li = document.createElement('li');
+          li.textContent = activity;
+          activitiesList.appendChild(li);
+        });
+
+        document.getElementById('companyLocation').textContent = company.location;
+        document.getElementById('companyDate').textContent = company.date;
+        document.getElementById('companyLink').href = company.link;
+        document.getElementById('companyDetails').textContent = company.details;
+      } else {
+        document.body.innerHTML = '<div class="error-message">企業が見つかりません。</div>';
+      }
+    });
+  </script>
+</body>
+</html>
