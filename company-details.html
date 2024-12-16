@@ -72,6 +72,7 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
 
+    
     .back-button {
       background-color: white;
       color: var(--primary-color);
@@ -275,26 +276,35 @@
   </header>
   <main>
     <div class="company-card">
-      <div class="logo-container">
+      <!-- <div class="logo-container">
         <img id="companyLogo" alt="企業ロゴ">
-      </div>
+      </div> -->
       <div class="company-content">
-        <p id="companyDescription"></p>
-        <h2 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 1rem;">主な活動内容</h2>
+        <!-- <h2 id="companyDescription" style="font-size: 1.6rem;"></h2> -->
+        <h2 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 1rem;">支援したブルーカーボン事業</h2>
         <ul id="companyActivities"></ul>
         <div class="info-grid">
+          <h2 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 1rem;">詳細情報</h2>
+          <p></p>
           <div class="info-item">
-            <strong>活動地域</strong>
-            <span id="companyLocation"></span>
+            <strong>購入量</strong>
+            <span id="companyAmount">[内容]</span>
           </div>
           <div class="info-item">
-            <strong>最新活動日</strong>
-            <span id="companyDate"></span>
+            <strong>購入日</strong>
+            <span id="companyDate">[内容]</span>
           </div>
+          <!-- 新しい項目の追加 -->
+          <div class="info-item">
+            <strong>創出元団体名</strong>
+            <span id="companyLocation">[内容]</span>
+          </div>
+          <div class="info-item">
+            <strong>その他環境施策</strong>
+            <span id="companyDetails">[内容]</span>
+          </div>
+          <a id="companyLink" href="#" target="_blank">企業ウェブサイトを見る</a> 
         </div>
-        <a id="companyLink" href="#" target="_blank">公式ウェブサイトを見る</a>
-        <p id="companyDetails"></p>
-      </div>
     </div>
   </main>
   <script src="js/companies.js"></script>
@@ -305,9 +315,9 @@
       const company = companies.find(c => c.id === parseInt(companyId));
 
       if (company) {
-        document.getElementById('companyName').textContent = company.name;
-        document.getElementById('companyLogo').src = company.image;
-        document.getElementById('companyDescription').textContent = company.description;
+        document.getElementById('companyName').textContent = company.title;
+        // document.getElementById('companyLogo').src = company.image;
+        // document.getElementById('companyDescription').textContent = company.description;
 
         const activitiesList = document.getElementById('companyActivities');
         const activities = company.activity.split('、');
@@ -320,6 +330,8 @@
         document.getElementById('companyLocation').textContent = company.location;
         document.getElementById('companyDate').textContent = company.date;
         document.getElementById('companyLink').href = company.link;
+        document.getElementById('companyAmount').textContent = company.amount;
+            // 新しく追加された社員数の表示
         document.getElementById('companyDetails').textContent = company.details;
       } else {
         document.body.innerHTML = '<div class="error-message">企業が見つかりません。</div>';
